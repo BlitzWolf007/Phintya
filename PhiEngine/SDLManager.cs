@@ -1,6 +1,5 @@
 ﻿using static SDL2.SDL;
 using System;
-using PhiEngine.World;
 using PhiEngine.World.Objects;
 
 namespace PhiEngine
@@ -38,6 +37,11 @@ namespace PhiEngine
                 {
                     o.Draw();
                 }
+
+                SDL_SetRenderDrawColor(SDLRenderer, 255, 0, 0, 255);
+                SDL_RenderDrawLine(SDLRenderer, EngineConstants.Video.ResolutionX / 2, 0, EngineConstants.Video.ResolutionX / 2, EngineConstants.Video.ResolutionY);
+                SDL_SetRenderDrawColor(SDLRenderer, 0, 0, 255, 255);
+                SDL_RenderDrawLine(SDLRenderer, 0, EngineConstants.Video.ResolutionY / 2, EngineConstants.Video.ResolutionX, EngineConstants.Video.ResolutionY / 2);
             }
             SDL_RenderPresent(SDLRenderer);
         }

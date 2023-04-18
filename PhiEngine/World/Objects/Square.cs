@@ -24,19 +24,18 @@ namespace PhiEngine.World.Objects
             };
 
             Vector2 renderPos = GameContainer.ActiveScene.Camera.TranslateToRenderPos(Transform.Position);
-
             SDL_Rect dest = new SDL_Rect()
             {
-                x = (int)(EngineConstants.Video.ResolutionX / 2 + renderPos.X * EngineConstants.Graphics.UnitPx),
-                y = (int)(EngineConstants.Video.ResolutionY / 2 - renderPos.Y * EngineConstants.Graphics.UnitPx),
+                x = (int)(renderPos.X - EngineConstants.Graphics.UnitPx * Transform.Scale.X / 2),
+                y = (int)(renderPos.Y - EngineConstants.Graphics.UnitPx * Transform.Scale.Y / 2),
                 w = (int)(EngineConstants.Graphics.UnitPx * Transform.Scale.X),
                 h = (int)(EngineConstants.Graphics.UnitPx * Transform.Scale.Y)
             };
 
             SDL_Point center = new SDL_Point()
             {
-                x = 0,
-                y = 0,
+                x = dest.w / 2,
+                y = dest.h / 2,
             };
 
             SDL_RenderCopyEx(SDLManager.SDLRenderer, Sprite.Texture, ref src, ref dest,
